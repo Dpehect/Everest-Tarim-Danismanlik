@@ -1,9 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:getagriculture/pages/pages_directed/fifteendays.dart';
-import 'package:getagriculture/controllers/weather_controller.dart';
 import 'package:get/get.dart';
+import 'package:getagriculture/pages/pages_directed/fifteendays.dart';
+import 'package:getagriculture/pages/pages_directed/notifications.dart';
+
+void main() {
+  runApp(GetMaterialApp(
+    home: WeatherSection(),
+  ));
+}
+
+class WeatherController extends GetxController {
+  var city = "Adana".obs;
+  var temperature = "12°".obs;
+  var weatherImage = 'assets/images/weather/lightning.png'.obs;
+  var weatherDetails = 'Sağanak Yağışlı'.obs;
+
+  updateWeather({
+    String newCity = "Adana",
+    String newTemperature = "12°",
+    String newWeatherImage = 'assets/images/weather/lightning.png',
+    String newWeatherDetails = 'Sağanak Yağışlı',
+  }) {
+    city(newCity);
+    temperature(newTemperature);
+    weatherImage(newWeatherImage);
+    weatherDetails(newWeatherDetails);
+  }
+}
 
 class WeatherSection extends StatelessWidget {
+  final WeatherController weatherController = Get.put(WeatherController());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -20,13 +47,13 @@ class WeatherSection extends StatelessWidget {
                 height: 24,
               ),
               onPressed: () {
-                // Add your settings action here
+                Get.to(() => NotificationsPage());
               },
             ),
           ],
         ),
-        body: GetBuilder<WeatherController>(builder: (controller) {
-          return ListView(
+        body: Obx(
+          () => ListView(
             children: [
               Container(
                 width: 300,
@@ -46,13 +73,13 @@ class WeatherSection extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-                      top: 6,
+                      top: 10,
                       left: 22,
                       child: Container(
                         width: 80,
                         height: 60,
                         child: Text(
-                          '12°',
+                          weatherController.temperature.value,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 48,
@@ -81,7 +108,7 @@ class WeatherSection extends StatelessWidget {
                       top: 65,
                       left: 22,
                       child: Container(
-                        width: 100,
+                        width: 200, // Ayarlamaları ihtiyaca göre yapabilirsiniz
                         height: 60,
                         child: Text(
                           'Yağış: 90%\nNem: 51%\nRüzgar: 16 km/s',
@@ -90,7 +117,7 @@ class WeatherSection extends StatelessWidget {
                             fontSize: 16,
                             fontFamily: 'Source Sans Pro',
                             fontWeight: FontWeight.w600,
-                            height: 0,
+                            height: 1.2, // Satır aralığı
                           ),
                         ),
                       ),
@@ -113,16 +140,16 @@ class WeatherSection extends StatelessWidget {
                       top: 265,
                       left: 65,
                       child: Container(
-                        width: 100,
+                        width: 200,
                         height: 60,
                         child: Text(
-                          'Adana',
+                          weatherController.city.value,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 32,
                             fontFamily: 'Source Sans Pro',
                             fontWeight: FontWeight.w600,
-                            height: 0,
+                            height: 1.2, // Satır aralığı
                           ),
                         ),
                       ),
@@ -341,6 +368,10 @@ class WeatherSection extends StatelessWidget {
                     child: Container(
                       width: 64,
                       height: 80,
+                      margin: EdgeInsets.only(
+                        left: 1,
+                        right: 7,
+                      ),
                       decoration: ShapeDecoration(
                         color: Colors.white,
                         shape: RoundedRectangleBorder(
@@ -356,29 +387,22 @@ class WeatherSection extends StatelessWidget {
                         ],
                       ),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Container(
-                            alignment: Alignment.center,
-                            padding: EdgeInsets.all(8),
-                            child: Text(
-                              '15 Günlük\nTahmin',
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 10,
-                                fontFamily: 'Source Sans Pro',
-                                fontWeight: FontWeight.w600,
-                                height: 1.2,
-                              ),
+                          Text(
+                            '15 Günlük\nTahmin',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
                             ),
                           ),
-                          Container(
+                          SizedBox(height: 5),
+                          Image.asset(
+                            'assets/images/weather/vector.png',
                             width: 41,
                             height: 25,
-                            child: Image.asset(
-                              'assets/images/weather/vector.png',
-                              fit: BoxFit.cover,
-                            ),
+                            fit: BoxFit.cover,
                           ),
                         ],
                       ),
@@ -446,26 +470,26 @@ class WeatherSection extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: ExpansionTile(
-                  title: Row(
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  title: Obx(() => Row(
                         children: [
-                          Text('Adana'),
-                          SizedBox(width: 36),
-                          Text('13°/9°'),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(weatherController.city.value),
+                              SizedBox(width: 36),
+                              Text(weatherController.temperature.value),
+                            ],
+                          ),
+                          SizedBox(width: 30),
+                          Image.asset(
+                            weatherController.weatherImage.value,
+                            width: 25,
+                            height: 25,
+                          ),
+                          SizedBox(width: 15),
+                          Text(weatherController.weatherDetails.value),
                         ],
-                      ),
-                      SizedBox(width: 30),
-                      Image.asset(
-                        'assets/images/weather/lightning.png',
-                        width: 25,
-                        height: 25,
-                      ),
-                      SizedBox(width: 15),
-                      Text('Sağanak Yağışlı'),
-                    ],
-                  ),
+                      )),
                   children: [
                     Row(
                       children: [
@@ -597,8 +621,8 @@ class WeatherSection extends StatelessWidget {
                 ),
               ),
             ],
-          );
-        }),
+          ),
+        ),
       ),
     );
   }
