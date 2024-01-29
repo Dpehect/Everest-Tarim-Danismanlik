@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/models/card_data.dart';
-import 'package:getagriculture/controllers/sayfa5_controller.dart';
+import 'package:getagriculture/controllers/profile_controller.dart';
 import 'package:getagriculture/profilesection/profilduzenle.dart';
 
 class Sayfa5Controller {
@@ -203,45 +203,40 @@ class Sayfa5Controller {
     );
   }
 
-  static Widget buildCardSection(
-      List<Map<String, dynamic>> cardData, BuildContext context) {
-    return SizedBox(
-      height: 15.0,
-      child: Wrap(
-        spacing: 5.0,
-        runSpacing: 5.0,
-        children: [
-          for (var data in cardData)
-            Container(
-              width: MediaQuery.of(context).size.width / 2 - 30,
-              height: 200,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                color: Colors.white,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 24.0,
-                    height: 24.0,
-                    child: Image.asset(
-                      data['imagePath'],
-                    ),
-                  ),
-                  SizedBox(height: 8.0),
-                  Text(
-                    data['text'],
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
+  static Widget buildCardSectionItem(
+      Map<String, dynamic> data, BuildContext context) {
+    double cardWidth = MediaQuery.of(context).size.width / 3 - 40;
+
+    return FractionallySizedBox(
+      widthFactor: 0.45, // Adjust this factor as needed
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 5.0),
+        height: 200,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(16),
+          color: Colors.white,
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 24.0,
+              height: 24.0,
+              child: Image.asset(
+                data['imagePath'],
               ),
             ),
-        ],
+            SizedBox(height: 8.0),
+            Text(
+              data['text'],
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

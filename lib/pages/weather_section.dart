@@ -1,68 +1,75 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:getagriculture/pages/pages_directed/fifteendays.dart';
 import 'package:getagriculture/pages/pages_directed/notifications.dart';
 
 void main() {
-  Get.testMode = true; // Test modu
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return GetMaterialApp(
-      key: Key("appKey"),
-      home: WeatherSection(),
-    );
-  }
-}
+class WeatherController {
+  late String city;
+  late String temperature;
+  late String weatherImage;
+  late String weatherDetails;
 
-class WeatherController extends GetxController {
-  var city = "Adana".obs;
-  var temperature = "12°".obs;
-  var weatherImage = 'assets/images/weather/lightning.png'.obs;
-  var weatherDetails = 'Sağanak Yağışlı'.obs;
+  WeatherController({
+    this.city = "Adana",
+    this.temperature = "12°",
+    this.weatherImage = 'assets/images/weather/lightning.png',
+    this.weatherDetails = 'Sağanak Yağışlı',
+  });
 
-  updateWeather({
+  void updateWeather({
     String newCity = "Adana",
     String newTemperature = "12°",
     String newWeatherImage = 'assets/images/weather/lightning.png',
     String newWeatherDetails = 'Sağanak Yağışlı',
   }) {
-    city(newCity);
-    temperature(newTemperature);
-    weatherImage(newWeatherImage);
-    weatherDetails(newWeatherDetails);
+    city = newCity;
+    temperature = newTemperature;
+    weatherImage = newWeatherImage;
+    weatherDetails = newWeatherDetails;
+  }
+}
+
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: WeatherSection(),
+    );
   }
 }
 
 class WeatherSection extends StatelessWidget {
-  final WeatherController weatherController = Get.put(WeatherController());
+  final WeatherController weatherController = WeatherController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFE5F3F6),
-      appBar: AppBar(
-        title: Text('HAVA DURUMU'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Image.asset(
-              'assets/images/news/notifications.png',
-              width: 24,
-              height: 24,
+        backgroundColor: Color(0xFFE5F3F6),
+        appBar: AppBar(
+          title: Text('HAVA DURUMU'),
+          centerTitle: true,
+          actions: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NotificationsPage(),
+                  ),
+                );
+              },
+              child: Image.asset(
+                'assets/images/news/notifications.png',
+                width: 24,
+                height: 24,
+              ),
             ),
-            onPressed: () {
-              Get.to(() => NotificationsPage());
-              // Eğer burada bir hata varsa, hatayı çözün.
-            },
-          ),
-        ],
-      ),
-      body: Obx(
-        () => ListView(
+          ],
+        ),
+        body: ListView(
           children: [
             Container(
               width: 300,
@@ -88,7 +95,8 @@ class WeatherSection extends StatelessWidget {
                       width: 80,
                       height: 60,
                       child: Text(
-                        weatherController.temperature.value,
+                        weatherController.temperature ??
+                            "", // Null check added here
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 48,
@@ -117,7 +125,7 @@ class WeatherSection extends StatelessWidget {
                     top: 65,
                     left: 22,
                     child: Container(
-                      width: 200, // Ayarlamaları ihtiyaca göre yapabilirsiniz
+                      width: 200,
                       height: 60,
                       child: Text(
                         'Yağış: 90%\nNem: 51%\nRüzgar: 16 km/s',
@@ -152,7 +160,7 @@ class WeatherSection extends StatelessWidget {
                       width: 200,
                       height: 60,
                       child: Text(
-                        weatherController.city.value,
+                        weatherController.city,
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 32,
@@ -479,26 +487,26 @@ class WeatherSection extends StatelessWidget {
                 borderRadius: BorderRadius.circular(8),
               ),
               child: ExpansionTile(
-                title: Obx(() => Row(
+                title: Row(
+                  children: [
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(weatherController.city.value),
-                            SizedBox(width: 36),
-                            Text(weatherController.temperature.value),
-                          ],
-                        ),
-                        SizedBox(width: 30),
-                        Image.asset(
-                          weatherController.weatherImage.value,
-                          width: 25,
-                          height: 25,
-                        ),
-                        SizedBox(width: 15),
-                        Text(weatherController.weatherDetails.value),
+                        Text(weatherController.city),
+                        SizedBox(width: 36),
+                        Text(weatherController.temperature),
                       ],
-                    )),
+                    ),
+                    SizedBox(width: 30),
+                    Image.asset(
+                      weatherController.weatherImage,
+                      width: 25,
+                      height: 25,
+                    ),
+                    SizedBox(width: 15),
+                    Text(weatherController.weatherDetails),
+                  ],
+                ),
                 children: [
                   Row(
                     children: [
@@ -630,8 +638,6 @@ class WeatherSection extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }

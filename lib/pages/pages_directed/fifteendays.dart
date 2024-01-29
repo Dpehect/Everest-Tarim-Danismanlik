@@ -19,18 +19,6 @@ class FifteenDaysPage extends StatelessWidget {
           ),
           title: Text('15 GÜNLÜK HAVA DURUMU'), // Updated title
           centerTitle: true,
-          actions: [
-            IconButton(
-              icon: Image.asset(
-                'assets/images/news/notifications.png',
-                width: 24,
-                height: 24,
-              ),
-              onPressed: () {
-                // Add your settings action here
-              },
-            ),
-          ],
         ),
         body: ListView(
           children: [
@@ -52,7 +40,7 @@ class FifteenDaysPage extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    top: 6,
+                    top: 10,
                     left: 22,
                     child: Container(
                       width: 80,
@@ -135,10 +123,6 @@ class FifteenDaysPage extends StatelessWidget {
                   ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [],
             ),
             SizedBox(height: 36),
             Card(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/profilesection/profilduzenle.dart';
-import 'package:getagriculture/controllers/sayfa5_controller.dart';
+import 'package:getagriculture/controllers/profile_controller.dart';
+import 'package:getagriculture/profilesection/ProfileDetailCard.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -13,10 +14,31 @@ class Profile extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Sayfa5Controller.buildProfileHeader(context),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProfileDetailCard(),
+                    ),
+                  );
+                },
+                child: Sayfa5Controller.buildProfileHeader(context),
+              ),
               Sayfa5Controller.buildWarningMessage(),
               Sayfa5Controller.buildParcelSection(),
-              Sayfa5Controller.buildCardSection(cardData, context),
+              for (var data in cardData)
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProfileDetailCard(),
+                      ),
+                    );
+                  },
+                  child: Sayfa5Controller.buildCardSectionItem(data, context),
+                ),
             ],
           ),
         ),

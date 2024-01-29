@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
-class ProfilDuzenle extends StatelessWidget {
+class ProfilDuzenle extends StatefulWidget {
+  @override
+  _ProfilDuzenleState createState() => _ProfilDuzenleState();
+}
+
+class _ProfilDuzenleState extends State<ProfilDuzenle> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,109 +13,130 @@ class ProfilDuzenle extends StatelessWidget {
         title: Text('Profil Düzenle'),
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              // Avatar
-              GestureDetector(
-                onTap: () {
-                  // Resme tıklandığında yapılacak işlemler
-                  print('Resme tıklandı');
-                },
-                child: CircleAvatar(
-                  backgroundImage:
-                      AssetImage('assets/images/profil/ppprofil.png'),
-                  radius: 40.0,
-                ),
-              ),
-              SizedBox(height: 10.0),
-              // Düzenleme ikonu
-              GestureDetector(
-                onTap: () {
-                  // Kalem ikonuna tıklandığında DuzenlemeSayfasi sayfasına yönlendir
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DuzenlemeSayfasi(),
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            // Avatar ve Profil Düzenle yazısı yanyana olacak
+            Container(
+              margin: EdgeInsets.only(
+                  top: 10.0, right: 120), // Container'a genel margin
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Avatar
+                  GestureDetector(
+                    onTap: () {
+                      print('Avatara tıklandı');
+                    },
+                    child: CircleAvatar(
+                      backgroundImage:
+                          AssetImage('assets/images/profil/pp.png'),
+                      radius: 40.0,
                     ),
-                  );
-                },
-                child: Container(
-                  padding: EdgeInsets.all(10.0),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
                   ),
-                  child: Icon(
-                    Icons.edit,
-                    color: Colors.black,
-                  ),
-                ),
+                  SizedBox(width: 10.0), // Resim ve yazı arasındaki boşluk
+
+                  // Profil Düzenle yazısı
+                  GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DuzenlemeSayfasi(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Orhan Topaç',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontFamily: 'Manrope',
+                          fontWeight: FontWeight.w400,
+                          height: 0.07,
+                        ),
+                      )),
+                ],
               ),
-              SizedBox(height: 10.0),
-              // Altındaki metin
-              Text(
-                'Profil Fotoğrafını Düzenle',
+            ),
+
+            Container(
+              margin: EdgeInsets.only(top: 30.0, right: 200),
+              child: Text(
+                'Profil Bilgileri',
                 style: TextStyle(
                   color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14.0,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.0,
+                  fontFamily: 'Manrope',
                 ),
               ),
-              SizedBox(height: 20.0),
-              // Rectangle içinde isim ve soyisim girişi
-              ProfilDuzenleTextField(hintText: 'İsim Soyisim'),
-              SizedBox(height: 10.0),
-              // Rectangle içinde e-posta veya telefon girişi
-              ProfilDuzenleTextField(hintText: 'E-posta veya Telefon'),
-              SizedBox(height: 10.0),
-              // İkinci rectangle'ın altına buton ekleme
-              ElevatedButton(
-                onPressed: () {
-                  // Kaydet butonuna tıklandığında yapılacak işlemler
-                },
-                child: Text('Kaydet'),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF78B032), // Buton arka plan rengi
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  textStyle: TextStyle(
-                    color: Colors.white, // Metin rengi
-                  ),
+            ),
+
+            SizedBox(height: 20.0),
+            ProfilDuzenleTextField(hintText: 'İsim Soyisim'),
+            SizedBox(height: 10.0),
+            ProfilDuzenleTextField(hintText: 'E-posta veya Telefon'),
+            SizedBox(height: 10.0),
+            ElevatedButton(
+              onPressed: () {
+                // Kaydet butonuna tıklandığında yapılacak işlemler
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(9), // 0 radius creates a rectangle
+                ),
+                minimumSize: Size(316, 50), // Width and height of the button
+                primary: Color(0xFF78B032), // Background color of the button
+                onPrimary: Colors.white, // Text color of the button
+              ),
+              child: Text(
+                'Profili Güncelle',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+
+            SizedBox(height: 20.0),
+            Container(
+              margin: EdgeInsets.only(top: 30.0, right: 200),
+              child: Text(
+                'Şifremi Değiştir',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16.0,
+                  fontFamily: 'Manrope',
                 ),
               ),
-              SizedBox(height: 20.0),
-              // İkinci kısım
-              ProfilDuzenleTextField(hintText: 'Mevcut şifreniz'),
-              SizedBox(height: 10.0),
-              ProfilDuzenleTextField(hintText: 'Yeni şifreniz'),
-              SizedBox(height: 10.0),
-              ProfilDuzenleTextField(hintText: 'Yeni şifrenizi tekrar girin'),
-              SizedBox(height: 20.0),
-              // İkinci rectangle'ın altına buton ekleme
-              ElevatedButton(
-                onPressed: () {
-                  // Profili Düzenle butonuna tıklandığında yapılacak işlemler
-                },
-                child: Text(
-                  'Profili Düzenle',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 14.0,
-                  ),
+            ),
+            SizedBox(height: 20.0),
+            ProfilDuzenleTextField(hintText: 'Mevcut şifreniz'),
+            SizedBox(height: 10.0),
+            ProfilDuzenleTextField(hintText: 'Yeni şifreniz'),
+            SizedBox(height: 10.0),
+            ProfilDuzenleTextField(hintText: 'Yeni şifrenizi tekrar girin'),
+            SizedBox(height: 20.0),
+            ElevatedButton(
+              onPressed: () {
+                // Kaydet butonuna tıklandığında yapılacak işlemler
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(9), // 0 radius creates a rectangle
                 ),
-                style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF78B032),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                ),
+                minimumSize: Size(316, 50), // Width and height of the button
+                primary: Color(0xFF78B032), // Background color of the button
+                onPrimary: Colors.white, // Text color of the button
               ),
-            ],
-          ),
+              child: Text(
+                'Şifremi Güncelle',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -158,7 +184,6 @@ class ProfilDuzenleTextField extends StatelessWidget {
 class DuzenlemeSayfasi extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // DüzenlemeSayfasi'nın içeriği buraya eklenebilir
     return Scaffold(
       appBar: AppBar(
         title: Text('Düzenleme Sayfası'),

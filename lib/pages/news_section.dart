@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/controllers/news_controller.dart';
+import 'package:getagriculture/pages/pages_directed/notifications.dart';
 
 class NewsSection extends StatefulWidget {
   @override
@@ -40,7 +41,12 @@ class _NewsSectionState extends State<NewsSection> {
               height: 24,
             ),
             onPressed: () {
-              // Handle notification button press
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationsPage(),
+                ),
+              );
             },
           ),
         ],
