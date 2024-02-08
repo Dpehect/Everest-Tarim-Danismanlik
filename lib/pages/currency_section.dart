@@ -42,12 +42,10 @@ class _Sayfa3State extends State<CurrencyPage> {
                   width: 24,
                   height: 24,
                 ),
-                onPressed: () {
-                  // Bildirim butonu basılınca işlemleri ekle
-                },
+                onPressed: () {},
               ),
             ],
-            expandedHeight: 60.0, // Adjust the height as needed
+            expandedHeight: 60.0,
             floating: false,
             pinned: true,
           ),
@@ -61,7 +59,6 @@ class _Sayfa3State extends State<CurrencyPage> {
                     controller: searchController,
                     onChanged: (value) {
                       setState(() {
-                        // Show the search results only if the search bar is not empty
                         showSearchResults = value.isNotEmpty;
                       });
                     },

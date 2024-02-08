@@ -45,7 +45,7 @@ class NotificationsPage extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(height: 10), // İki ikili arasında bir boşluk ekledik
+          SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,

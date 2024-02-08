@@ -246,7 +246,13 @@ class ProfileDetailCard extends StatelessWidget {
                 color: Color(0xFF78B032),
               ),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AnalizePageProfile()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.transparent,
                   elevation: 0,
@@ -320,164 +326,184 @@ class ProfileDetailCard extends StatelessWidget {
               ],
             ),
             SizedBox(height: 25.0),
-            Row(
-              children: [
-                Container(
-                  width: 152,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AnalizePageProfile(),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 60.0,
-                        left: 25.0,
-                        child: Text(
-                          'Toprak Analizi',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Source Sans Pro',
-                            fontWeight: FontWeight.w400,
+                );
+              },
+              child: Row(
+                children: [
+                  Container(
+                    width: 152,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 60.0,
+                          left: 25.0,
+                          child: Text(
+                            'Toprak Analizi',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Source Sans Pro',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: 10.0,
-                        right: 55.0,
-                        child: Image.asset(
-                          'assets/images/profil/soil.png',
-                          width: 40.0,
-                          height: 40.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 16.0),
-                Container(
-                  width: 152,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 60.0,
-                        left: 25.0,
-                        child: Text(
-                          'Yaprak Analizi',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Source Sans Pro',
-                            fontWeight: FontWeight.w400,
+                        Positioned(
+                          top: 10.0,
+                          right: 55.0,
+                          child: Image.asset(
+                            'assets/images/profil/soil.png',
+                            width: 40.0,
+                            height: 40.0,
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: 10.0,
-                        right: 55.0,
-                        child: Image.asset(
-                          'assets/images/profil/leaf.png',
-                          width: 40.0,
-                          height: 40.0,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(width: 16.0),
+                  Container(
+                    width: 152,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 60.0,
+                          left: 25.0,
+                          child: Text(
+                            'Yaprak Analizi',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Source Sans Pro',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 10.0,
+                          right: 55.0,
+                          child: Image.asset(
+                            'assets/images/profil/leaf.png',
+                            width: 40.0,
+                            height: 40.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
             SizedBox(height: 20),
-            Row(
-              children: [
-                Container(
-                  width: 152,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AnalizePageProfile(),
                   ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 60.0,
-                        left: 40.0,
-                        child: Text(
-                          'Su Analizi',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Source Sans Pro',
-                            fontWeight: FontWeight.w400,
+                );
+              },
+              child: Row(
+                children: [
+                  Container(
+                    width: 152,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 60.0,
+                          left: 40.0,
+                          child: Text(
+                            'Su Analizi',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Source Sans Pro',
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: 10.0,
-                        right: 55.0,
-                        child: Image.asset(
-                          'assets/images/profil/wateringsoil.png',
-                          width: 40.0,
-                          height: 40.0,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(width: 16.0),
-                Container(
-                  width: 152,
-                  height: 100,
-                  decoration: ShapeDecoration(
-                    color: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      Positioned(
-                        top: 60.0,
-                        left: 25.0,
-                        child: Text(
-                          'Kalıntı Analizi',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontFamily: 'Source Sans Pro',
-                            fontWeight: FontWeight.w400,
+                        Positioned(
+                          top: 10.0,
+                          right: 55.0,
+                          child: Image.asset(
+                            'assets/images/profil/wateringsoil.png',
+                            width: 40.0,
+                            height: 40.0,
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: 10.0,
-                        right: 55.0,
-                        child: Image.asset(
-                          'assets/images/profil/moisture.png',
-                          width: 40.0,
-                          height: 40.0,
-                        ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                  SizedBox(width: 16.0),
+                  Container(
+                    width: 152,
+                    height: 100,
+                    decoration: ShapeDecoration(
+                      color: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 1, color: Color(0xFFD9D9D9)),
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                    child: Stack(
+                      children: [
+                        Positioned(
+                          top: 60.0,
+                          left: 25.0,
+                          child: Text(
+                            'Kalıntı Analizi',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 16,
+                              fontFamily: 'Source Sans Pro',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 10.0,
+                          right: 55.0,
+                          child: Image.asset(
+                            'assets/images/profil/moisture.png',
+                            width: 40.0,
+                            height: 40.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -722,7 +748,13 @@ class ProfileDetailCard extends StatelessWidget {
                 color: Color(0xFF78B032),
               ),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AnalizePageProfile()),
+                  );
+                },
                 style: ElevatedButton.styleFrom(
                   primary: Colors.transparent,
                   elevation: 0,

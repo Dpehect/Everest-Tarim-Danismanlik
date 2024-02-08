@@ -1,46 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:getagriculture/profilesection/profilduzenle.dart';
 import 'package:getagriculture/controllers/profile_controller.dart';
 import 'package:getagriculture/profilesection/ProfileDetailCard.dart';
 
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final cardData = Sayfa5Controller.getCardData();
+    final cardData = ProfileController.getCardData();
 
     return Scaffold(
-      body: Container(
-        color: Color(0xFFF1F2F4),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ProfileDetailCard(),
-                    ),
-                  );
-                },
-                child: Sayfa5Controller.buildProfileHeader(context),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ProfileDetailCard(),
+                  ),
+                );
+              },
+              child: ProfileController.buildProfileHeader(context),
+            ),
+            ProfileController.buildWarningMessage(),
+            ProfileController.buildParcelSection(),
+            for (int i = 0; i < cardData.length; i += 2)
+              ProfileController.buildCardSectionItem(
+                cardData[i],
+                (i + 1 < cardData.length) ? cardData[i + 1] : {},
+                context,
               ),
-              Sayfa5Controller.buildWarningMessage(),
-              Sayfa5Controller.buildParcelSection(),
-              for (var data in cardData)
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfileDetailCard(),
-                      ),
-                    );
-                  },
-                  child: Sayfa5Controller.buildCardSectionItem(data, context),
-                ),
-            ],
-          ),
+          ],
         ),
       ),
     );

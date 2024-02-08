@@ -19,15 +19,23 @@ class SingleColumnCard extends StatelessWidget {
       onTap: onTap,
       child: Card(
         elevation: 3,
-        margin: EdgeInsets.all(8),
+        margin: EdgeInsets.only(left: 16, top: 8, right: 12, bottom: 8),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(12),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.asset(imageURL,
-                height: 150, width: double.infinity, fit: BoxFit.cover),
-            SizedBox(
-              height: 8,
+            ClipRRect(
+              borderRadius: BorderRadius.vertical(top: Radius.circular(12)),
+              child: Image.asset(
+                imageURL,
+                height: 150,
+                width: double.infinity,
+                fit: BoxFit.cover,
+              ),
             ),
+            SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
@@ -35,9 +43,7 @@ class SingleColumnCard extends StatelessWidget {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            SizedBox(
-              height: 8,
-            ),
+            SizedBox(height: 8),
             Padding(
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
               child: Text(

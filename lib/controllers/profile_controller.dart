@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:getagriculture/models/card_data.dart';
-import 'package:getagriculture/controllers/profile_controller.dart';
 import 'package:getagriculture/profilesection/profilduzenle.dart';
+import 'package:getagriculture/widgets/double_column_card.dart';
+import 'package:getagriculture/profilesection/ProfileDetailCard.dart';
 
-class Sayfa5Controller {
+class ProfileController {
   static const double containerLeftMargin = 20.0;
   static const double containerRightMargin = 20.0;
   static const double containerTopMargin = 70.0;
@@ -203,14 +203,17 @@ class Sayfa5Controller {
     );
   }
 
-  static Widget buildCardSectionItem(
-      Map<String, dynamic> data, BuildContext context) {
-    double cardWidth = MediaQuery.of(context).size.width / 3 - 40;
+  static Widget buildCardSectionItem(Map<String, dynamic> data1,
+      Map<String, dynamic> data2, BuildContext context,
+      {double buttonHeight = 40.0,
+      double buttonWidth = 150.0,
+      double buttonRadius = 8.0}) {
+    double cardWidth = (MediaQuery.of(context).size.width - 40) / 2 - 10;
 
-    return FractionallySizedBox(
-      widthFactor: 0.45, // Adjust this factor as needed
-      child: Container(
-        margin: EdgeInsets.symmetric(horizontal: 5.0),
+    Widget buildCard(Map<String, dynamic> data) {
+      return Container(
+        margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 5),
+        width: cardWidth,
         height: 200,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
@@ -235,8 +238,71 @@ class Sayfa5Controller {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            SizedBox(height: 8.0),
+            Container(
+              width: buttonWidth,
+              height: buttonHeight,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(buttonRadius),
+                color: Color(0xFF78B032), // Set the button color to #78B032
+              ),
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          ProfileDetailCard(), // Use your ProfileDetailCard class
+                    ),
+                  );
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.transparent,
+                  elevation: 0,
+                ),
+                child: Text(
+                  'Analizleri Gör',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 12.0,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
+      );
+    }
+
+    return Row(
+      children: [
+        Expanded(
+          child: buildCard(data1),
+        ),
+        SizedBox(width: 10.0),
+        Expanded(
+          child: buildCard(data2),
+        ),
+      ],
+    );
+  }
+
+  static Widget buildCardSection(
+      List<Map<String, dynamic>> cardData, BuildContext context) {
+    List<Widget> rows = [];
+
+    for (int i = 0; i < cardData.length; i += 2) {
+      if (i + 1 < cardData.length) {
+        rows.add(buildCardSectionItem(cardData[i], cardData[i + 1], context));
+      } else {
+        rows.add(buildCardSectionItem(cardData[i], {}, context));
+      }
+    }
+
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 5.0),
+      child: Column(
+        children: rows,
       ),
     );
   }

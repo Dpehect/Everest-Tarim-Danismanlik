@@ -1,74 +1,124 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/widgets/double_column_card.dart';
 import 'package:getagriculture/widgets/single_column_card.dart';
-import 'package:getagriculture/pages/pages_directed/DetaySayfa.dart';
+import 'package:getagriculture/pages/pages_directed/DatabasePage2.dart';
 import 'package:getagriculture/pages/pages_directed/SearchNewsSection.dart';
-import 'package:getagriculture/models/news_data.dart';
+import 'package:getagriculture/models/news_data.dart'; // Import the correct model
 import 'package:getagriculture/pages/pages_directed/second_page.dart';
 
 class NewsController {
-  static List<NewsData> getNewsDataList() {
+  static List<NewsDoubleData> getDoubleColumnData() {
     return [
-      NewsData(
+      NewsDoubleData(
         extraText: '21.12.2023',
-        title: 'Bitki Hastalıkları ve Zararlılarıyla Başa Çıkma Stratejileri',
-        description: 'Yazıyı Oku ->',
+        title:
+            'Bitki Hastalıkları ve Zararlılarıyla Başa Çıkma Stratejileri Bitki Hastalıkları ve Zararlılarıyla Başa',
         imageURL: 'assets/images/YATAYkart1.png',
       ),
-      NewsData(
+      NewsDoubleData(
         extraText: '21.12.2023',
-        title: 'Sürdürülebilir Tarım: Doğa Dostu Uygulamalar ve Avantajları',
-        description: 'Yazıyı Oku ->',
+        title:
+            'Organik Tarımın Gücü: Yerel Çiftçilerden Sofralarınıza Sağlık Dolu Lezzetler',
         imageURL: 'assets/images/YATAYkart2.png',
       ),
-      // Diğer haberler
+      NewsDoubleData(
+        extraText: '21.12.2023',
+        title:
+            'İklim Değişikliğine Karşı Tarım: Adaptasyon ve Dayanıklılık Stratejileri',
+        imageURL: 'assets/images/YATAYkart3.png',
+      ),
+      NewsDoubleData(
+        extraText: '21.12.2023',
+        title: 'Modern Tarım Teknolojileri: Verimliliği Artırmak İçin İpuçları',
+        imageURL: 'assets/images/YATAYkart4.png',
+      ),
+    ];
+  }
+
+  static List<NewsSingleData> getSingleColumnData() {
+    return [
+      NewsSingleData(
+        extraText: '21.12.2023',
+        title:
+            'İnovasyon Tarımında Çığır Açıyor: Yapay Zeka Destekli Tarım Robotları Sahada!',
+        description: 'Tarım Teknoloji Haberleri',
+        imageURL: 'assets/images/DİKEYkart1.png',
+      ),
+      NewsSingleData(
+        extraText: '21.12.2023',
+        title:
+            'Organik Tarımın Gücü: Yerel Çiftçilerden Sofralarınıza Sağlık Dolu Lezzetler',
+        description: 'Organik Haber',
+        imageURL: 'assets/images/DİKEYkart2.png',
+      ),
     ];
   }
 
   static Widget buildNewsSection(bool isDoubleColumn, BuildContext context) {
-    List<NewsData> newsDataList = getNewsDataList();
+    List<dynamic> newsDataList =
+        isDoubleColumn ? getDoubleColumnData() : getSingleColumnData();
+
     return isDoubleColumn
-        ? _buildDoubleColumn(newsDataList, context)
-        : _buildSingleColumn(newsDataList, context);
+        ? _buildDoubleColumn(newsDataList.cast<NewsDoubleData>(), context)
+        : _buildSingleColumn(newsDataList.cast<NewsSingleData>(), context);
   }
 
   static Widget _buildDoubleColumn(
-      List<NewsData> newsDataList, BuildContext context) {
+      List<NewsDoubleData> newsDataList, BuildContext context) {
+    List<Widget> cards = [];
+
+    for (int i = 0; i < newsDataList.length; i += 2) {
+      if (i + 1 < newsDataList.length) {
+        cards.add(
+          DoubleColumnCard(
+            extraText1: newsDataList[i].extraText,
+            title1: newsDataList[i].title,
+            imageURL1: newsDataList[i].imageURL,
+            extraText2: newsDataList[i + 1].extraText,
+            title2: newsDataList[i + 1].title,
+            imageURL2: newsDataList[i + 1].imageURL,
+            onTap1: () => _onCardTapped(context, newsDataList[i]),
+            onTap2: () => _onCardTapped(context, newsDataList[i + 1]),
+          ),
+        );
+      } else {
+        cards.add(
+          SingleColumnCard(
+            title: newsDataList[i].title,
+            description: '',
+            imageURL: newsDataList[i].imageURL,
+            onTap: () => _onCardTapped(context, newsDataList[i]),
+          ),
+        );
+      }
+    }
+
     return Column(
-      children: [
-        DoubleColumnCard(
-          extraText1: newsDataList[0].extraText,
-          title1: newsDataList[0].title,
-          description1: newsDataList[0].description,
-          imageURL1: newsDataList[0].imageURL,
-          extraText2: newsDataList[1].extraText,
-          title2: newsDataList[1].title,
-          description2: newsDataList[1].description,
-          imageURL2: newsDataList[1].imageURL,
-          onTap1: () => _onCardTapped(context, newsDataList[0]),
-          onTap2: () => _onCardTapped(context, newsDataList[1]),
-        ),
-        // Diğer çift sütun kartları
-      ],
+      children: cards,
     );
   }
 
   static Widget _buildSingleColumn(
-      List<NewsData> newsDataList, BuildContext context) {
-    return Column(
-      children: [
+      List<NewsSingleData> newsDataList, BuildContext context) {
+    List<Widget> cards = [];
+
+    for (int i = 0; i < newsDataList.length; i++) {
+      cards.add(
         SingleColumnCard(
-          title: newsDataList[0].title,
-          description: newsDataList[0].description,
-          imageURL: newsDataList[0].imageURL,
-          onTap: () => _onCardTapped(context, newsDataList[0]),
+          title: newsDataList[i].title,
+          description: newsDataList[i].description,
+          imageURL: newsDataList[i].imageURL,
+          onTap: () => _onCardTapped(context, newsDataList[i]),
         ),
-        // Diğer tek sütun kartları
-      ],
+      );
+    }
+
+    return Column(
+      children: cards,
     );
   }
 
-  static void _onCardTapped(BuildContext context, NewsData newsData) {
+  static void _onCardTapped(BuildContext context, dynamic newsData) {
     print("Card tapped: ${newsData.title}");
     Navigator.push(
       context,

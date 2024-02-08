@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/pages/news_section.dart';
-import 'package:getagriculture/pages/sayfa2.dart';
+import 'package:getagriculture/pages/database_section.dart';
 import 'package:getagriculture/pages/currency_section.dart';
 import 'package:getagriculture/pages/weather_section.dart'; // Değişiklik burada
 import 'package:getagriculture/profilesection/profile.dart';
