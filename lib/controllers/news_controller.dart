@@ -3,7 +3,7 @@ import 'package:getagriculture/widgets/double_column_card.dart';
 import 'package:getagriculture/widgets/single_column_card.dart';
 import 'package:getagriculture/pages/pages_directed/DatabasePage2.dart';
 import 'package:getagriculture/pages/pages_directed/SearchNewsSection.dart';
-import 'package:getagriculture/models/news_data.dart'; // Import the correct model
+import 'package:getagriculture/models/news_data.dart';
 import 'package:getagriculture/pages/pages_directed/second_page.dart';
 
 class NewsController {

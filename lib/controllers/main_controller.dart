@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:getagriculture/pages/news_section.dart';
 import 'package:getagriculture/pages/database_section.dart';
 import 'package:getagriculture/pages/currency_section.dart';
-import 'package:getagriculture/pages/weather_section.dart'; // Değişiklik burada
-import 'package:getagriculture/profilesection/profile.dart';
+import 'package:getagriculture/pages/weather_section.dart';
+import 'package:getagriculture/pages/profilesection/profile.dart';
 
 class MainController {
   static List<Widget> getPages() {
@@ -11,7 +11,7 @@ class MainController {
       NewsSection(),
       Sayfa2(),
       CurrencyPage(),
-      WeatherSection(), // Değişiklik burada
+      WeatherSection(),
       Profile(),
     ];
   }

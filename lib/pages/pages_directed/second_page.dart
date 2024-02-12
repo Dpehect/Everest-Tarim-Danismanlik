@@ -3,7 +3,7 @@ import 'package:getagriculture/pages/news_section.dart';
 import 'package:getagriculture/pages/currency_Section.dart';
 import 'package:getagriculture/pages/database_section.dart';
 import 'package:getagriculture/pages/weather_section.dart';
-import 'package:getagriculture/profilesection/profile.dart';
+import 'package:getagriculture/pages/profilesection/profile.dart';
 
 class StatusBar2 extends StatelessWidget {
   final String pageTitle;

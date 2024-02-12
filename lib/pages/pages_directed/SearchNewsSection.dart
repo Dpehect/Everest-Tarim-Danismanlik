@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class SearchNewsSection extends StatelessWidget {
   final String searchText;
 
-  SearchNewsSection({required this.searchText});
+  SearchNewsSection({this.searchText = ""});
 
   @override
   Widget build(BuildContext context) {

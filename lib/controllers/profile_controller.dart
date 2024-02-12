@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:getagriculture/profilesection/profilduzenle.dart';
+import 'package:getagriculture/pages/profilesection/profilduzenle.dart';
 import 'package:getagriculture/widgets/double_column_card.dart';
-import 'package:getagriculture/profilesection/ProfileDetailCard.dart';
+import 'package:getagriculture/pages/profilesection/ProfileDetailCard.dart';
 
 class ProfileController {
   static const double containerLeftMargin = 20.0;

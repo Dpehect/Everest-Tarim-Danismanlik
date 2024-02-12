@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getagriculture/pages/pages_directed/DatabasePage2.dart';
+import 'package:getagriculture/pages/pages_directed/notifications.dart';
 
 class Sayfa2 extends StatelessWidget {
   @override
@@ -19,7 +20,14 @@ class Sayfa2 extends StatelessWidget {
               width: 24,
               height: 24,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => NotificationsPage(),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -30,38 +38,39 @@ class Sayfa2 extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: 16.0),
-             Container(
-  height: 40.0,
-  width: MediaQuery.of(context).size.width - 32, // Adjust width as needed
-  decoration: BoxDecoration(
-    color: Colors.white,
-    borderRadius: BorderRadius.circular(8.0),
-  ),
-  child: Row(
-    children: [
-      SizedBox(width: 10),
-      Expanded(
-        child: TextField(
-          style: TextStyle(fontFamily: 'Roboto'),
-          decoration: InputDecoration(
-            labelText: 'Bilgi veri tabanı içerisinde ara',
-            labelStyle: TextStyle(color: Colors.grey),
-            border: InputBorder.none,
-          ),
-        ),
-      ),
-      SizedBox(width: 8.0),
-      Container(
-        margin: EdgeInsets.only(right: 20.0),
-        child: Image.asset(
-          'assets/images/database/search.png',
-          width: 20,
-          height: 30,
-        ),
-      ),
-    ],
-  ),
-),
+              Container(
+                height: 40.0,
+                width: MediaQuery.of(context).size.width -
+                    32, // Adjust width as needed
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(width: 10),
+                    Expanded(
+                      child: TextField(
+                        style: TextStyle(fontFamily: 'Roboto'),
+                        decoration: InputDecoration(
+                          labelText: 'Bilgi veri tabanı içerisinde ara',
+                          labelStyle: TextStyle(color: Colors.grey),
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                    SizedBox(width: 8.0),
+                    Container(
+                      margin: EdgeInsets.only(right: 20.0),
+                      child: Image.asset(
+                        'assets/images/database/search.png',
+                        width: 20,
+                        height: 30,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
 
               SizedBox(height: 16.0),
               _buildRectangle(

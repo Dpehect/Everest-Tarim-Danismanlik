@@ -139,10 +139,10 @@ class DatabasePage4 extends StatelessWidget {
                 text:
                     'Huanglongbing (HLB), narenciye ağaçları üzerinde ciddi hasara neden olan, bakteriyel bir hastalık olarak bilinir. Bu hastalık, özellikle portakal, greyfurt ve mandalina gibi ticari olarak önemli olan citrus türlerini etkileyebilir. HLB, dünya genelinde citrus endüstrisinde büyük bir tehdit oluşturarak milyonlarca dolarlık ekonomik kayba yol açmaktadır.\n\n\n',
                 style: DefaultTextStyle.of(context).style.copyWith(
-                      fontSize: 14,
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    fontSize: 14,
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Inter'),
               ),
               TextSpan(
                 text: 'Hastalığın Etkeni ve Bulaşma Yolları:\n',
@@ -156,10 +156,10 @@ class DatabasePage4 extends StatelessWidget {
                 text:
                     "HLB'nin etkeni, Candidatus Liberibacter cinsi bakterileridir. Bu bakteri, narenciye ağaçlarını özellikle psyllid adı verilen bir tür böcek aracılığıyla bulaştırır. Psyllidler, enfekte ağaçlardan alınan özleri sağlıklı ağaçlara taşıyarak hastalığın yayılmasına katkıda bulunurlar. Ayrıca, enfekte ağaçların tohumları da hastalığı taşıyabilir, bu da yeni fidanların enfekte olma riskini arttırır.\n\n",
                 style: DefaultTextStyle.of(context).style.copyWith(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Inter'),
               ),
               TextSpan(
                 text: 'Belirtiler ve Tanı:\n',
@@ -173,10 +173,10 @@ class DatabasePage4 extends StatelessWidget {
                 text:
                     "HLB'nin belirtileri genellikle yavaş bir şekilde ortaya çıkar ve hastalık ilk olarak yapraklarda belirginleşir. Yapraklarda sararma, küçülme ve düzensiz şekil bozuklukları gözlemlenir. Ayrıca, ağaçlarda çiçek ve meyve düşüklüğü yaşanabilir. Meyvelerde ise renk değişiklikleri, asimetrik şekil bozuklukları ve tat değişiklikleri gözlenebilir.\n\n",
                 style: DefaultTextStyle.of(context).style.copyWith(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Inter'),
               ),
               TextSpan(
                 text: 'Ekonomik Etkiler: \n',
@@ -190,10 +190,10 @@ class DatabasePage4 extends StatelessWidget {
                 text:
                     "HLB'nin belirtileri genellikle yavaş bir şekilde ortaya çıkar ve hastalık ilk olarak yapraklarda belirginleşir. Yapraklarda sararma, küçülme ve düzensiz şekil bozuklukları gözlemlenir. Ayrıca, ağaçlarda çiçek ve meyve düşüklüğü yaşanabilir. Meyvelerde ise renk değişiklikleri, asimetrik şekil bozuklukları ve tat değişiklikleri gözlenebilir.\n\n",
                 style: DefaultTextStyle.of(context).style.copyWith(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Inter'),
               ),
               TextSpan(
                 text: 'Mücadele ve Kontrol Yöntemleri: \n',
@@ -207,10 +207,10 @@ class DatabasePage4 extends StatelessWidget {
                 text:
                     "HLB'ye karşı mücadelede, hastalığa dayanıklı citrus çeşitlerinin geliştirilmesi ve kullanılması önemlidir. Ayrıca, psyllid popülasyonunu kontrol altında tutmak için pestisit uygulamaları da yaygın olarak kullanılmaktadır. Tarım yetkilileri, enfekte ağaçların hızla tespit edilmesi ve izolasyonu için etkili denetim ve izleme programları uygularlar.Sonuç: Huanglongbing, citrus endüstrisi için ciddi bir tehdit oluşturan ve hala tam anlamıyla kontrol altına alınamamış bir hastalıktır. Küresel çapta araştırmalar ve işbirliği, HLB'nin etkilerini azaltmak ve citrus endüstrisini korumak için önemlidir. Bu süreçte, tarım uzmanları, çiftçiler ve araştırmacılar arasındaki işbirliği, HLB ile mücadelede daha etkili stratejilerin geliştirilmesine katkı sağlayabilir.\n\n",
                 style: DefaultTextStyle.of(context).style.copyWith(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontWeight: FontWeight.normal,
-                    ),
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontWeight: FontWeight.normal,
+                    fontFamily: 'Inter'),
               ),
             ],
           ),

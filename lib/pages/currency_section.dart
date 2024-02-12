@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:getagriculture/pages/pages_directed/notifications.dart';
 
 void main() {
   runApp(MyApp());
@@ -42,7 +43,14 @@ class _Sayfa3State extends State<CurrencyPage> {
                   width: 24,
                   height: 24,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => NotificationsPage(),
+                    ),
+                  );
+                },
               ),
             ],
             expandedHeight: 60.0,
